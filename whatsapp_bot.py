@@ -9,7 +9,7 @@ import os
 
 def config():
     EDGE_DRIVER_PATH = "msedgedriver.exe"
-    usuario_dir = "C:/Users/SEU_USUARIO/AppData/Local/Microsoft/Edge/User Data/NOVO_PERFIL_CRIADO"
+    usuario_dir = "C:/Users/SEU_USUARIO/AppData/Local/Microsoft/Edge/User Data/Profile 1"
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
     options = webdriver.EdgeOptions()
     options.add_argument(f"--user-data-dir={usuario_dir}")
