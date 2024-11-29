@@ -44,7 +44,7 @@ Este projeto utiliza `Selenium` para automatizar o envio de mensagens pelo Whats
 
 3.Altere o script pro funcionamento ficar correto:
 
-   12   usuario_dir = "C:/Users/`SEU_USUARIO`/AppData/Local/Microsoft/Edge/User Data/`NOVO_PERFIL_CRIADO`"
+   - 12   usuario_dir = "C:/Users/`SEU_USUARIO`/AppData/Local/Microsoft/Edge/User Data/`NOVO_PERFIL_CRIADO`"
 
 4. Execute o script:
 
