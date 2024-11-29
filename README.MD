@@ -42,13 +42,18 @@ Este projeto utiliza `Selenium` para automatizar o envio de mensagens pelo Whats
    - `numeros.txt`: Lista de números no formato `5511999999999`, um por linha.
    - `numeros_mensagem.txt`: Cada linha no formato `5511999999999;Sua mensagem personalizada`.
 
-3. Execute o script:
+3.Altere o script pro funcionamento ficar correto:
+   ```
+   12   usuario_dir = "C:/Users/`SEU_USUARIO`/AppData/Local/Microsoft/Edge/User Data/`NOVO_PERFIL_CRIADO`"
+   ```
+
+4. Execute o script:
 
    ```bash
    python whatsapp_bot.py
    ```
 
-4. Escolha o modo de disparo:
+5. Escolha o modo de disparo:
    - `(1)`: Mensagem única para vários números.
    - `(2)`: Mensagens personalizadas.
 
