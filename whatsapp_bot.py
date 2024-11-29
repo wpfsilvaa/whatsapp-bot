@@ -34,6 +34,7 @@ def abrir_arquivo(nome_do_arquivo):
 def abrir_whatsapp(driver):
     driver.get("https://web.whatsapp.com")
     WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div[contenteditable="true"]')))
+    driver.minimize_window()
     print("Login realizado com sucesso no WhatsApp Web.")
 
 def enviar_mensagem(driver, numero, mensagem):
