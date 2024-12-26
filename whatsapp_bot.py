@@ -9,7 +9,7 @@ import os
 
 def config():
     EDGE_DRIVER_PATH = "msedgedriver.exe"
-    usuario_dir = "C:/Users/SEU_USUARIO/AppData/Local/Microsoft/Edge/User Data/Profile 1"
+    usuario_dir = "C:/Users/wpfsi/AppData/Local/Microsoft/Edge/User Data/Profile 1"
     user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
     options = webdriver.EdgeOptions()
     options.add_argument(f"--user-data-dir={usuario_dir}")
@@ -24,7 +24,6 @@ def config():
 def abrir_arquivo(nome_do_arquivo):
     if not os.path.exists(nome_do_arquivo):
         raise FileNotFoundError(f"Arquivo '{nome_do_arquivo}' não encontrado.")
-    
     with open(nome_do_arquivo, 'r', encoding="UTF-8") as arquivo:
         linhas = [linha.strip() for linha in arquivo.readlines() if linha.strip()]
     if not linhas:
@@ -33,7 +32,7 @@ def abrir_arquivo(nome_do_arquivo):
 
 def abrir_whatsapp(driver):
     driver.get("https://web.whatsapp.com")
-    WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div[contenteditable="true"]')))
+    WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div[contenteditable="true"]')))
     driver.minimize_window()
     print("Login realizado com sucesso no WhatsApp Web.")
 
@@ -73,6 +72,28 @@ def disparo_modo_2(driver):
     finally:
         driver.quit()
 
+def disparo_agendado():
+    hora, minutos = input("Digite a hora Ex (23:15):").split(":")
+    print("(1) Disparo em massa (mensagem única para vários números)")
+    print("(2) Disparo em massa (mensagens personalizadas)")
+    tipo = ""
+    opt = input("::")
+    if(opt == 1):
+        tipo = "unica"
+    elif( opt == 2):
+        tipo = "personalizado"
+    while(True):
+        hora_atual = time.localtime().tm_hour
+        min_atual = time.localtime().tm_min
+        if( hora_atual == float(hora) and min_atual == float(minutos)):
+            if(tipo == "unica"):
+                return "disparo_modo_1"
+            elif(tipo == "personalizado"):
+                return "disparo_modo_2"
+            break
+        else:
+            time.sleep(1)
+
 if __name__ == '__main__':
     driver = config()
     with driver:
@@ -82,14 +103,20 @@ if __name__ == '__main__':
             print("Selecione uma opção:")
             print("(1) Disparo em massa (mensagem única para vários números)")
             print("(2) Disparo em massa (mensagens personalizadas)")
+            print("(3) Disparo agendado")
             escolha = int(input(":: "))
             if escolha == 1:
                 disparo_modo_1(driver)
             elif escolha == 2:
                 disparo_modo_2(driver)
+            elif escolha == 3:
+                if(disparo_agendado() == "disparo_modo_1"):
+                    disparo_modo_1(driver)
+                else:
+                    disparo_modo_2(driver)
             else:
                 print("Opção inválida.")
         except Exception as e:
-            print(f"Erro geral: {e}")
+            print(f"Erro geral")
         finally:
             driver.quit()
