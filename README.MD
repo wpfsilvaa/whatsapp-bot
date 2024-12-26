@@ -14,6 +14,7 @@ Este projeto utiliza `Selenium` para automatizar o envio de mensagens pelo Whats
 
 - **Modo 1:** Envia a mesma mensagem para vários números.
 - **Modo 2:** Envia mensagens personalizadas para números específicos, com base em um arquivo de configuração.
+- **Modo 3:** Agenda um disparo e envia as mensagens de acordo com alguma das funções anteriores.
 
 ---
 
@@ -54,6 +55,7 @@ Este projeto utiliza `Selenium` para automatizar o envio de mensagens pelo Whats
 5. Escolha o modo de disparo:
    - `(1)`: Mensagem única para vários números.
    - `(2)`: Mensagens personalizadas.
+   - `(3)`: Disparo Agendado.
 
 ---
 
